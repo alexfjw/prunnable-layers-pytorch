@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d125b489-bce8-453e-b3fc-10c97f56822a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="d125b489-bce8-453e-b3fc-10c97f56822a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,11 +140,6 @@
             <path>
               <item name="pruning_cnns" type="b2602c69:ProjectViewProjectNode" />
               <item name="pruning_cnns" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pruning_cnns" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pruning_cnns" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />

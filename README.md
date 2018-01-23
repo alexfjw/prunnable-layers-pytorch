@@ -31,7 +31,7 @@ For examples of the full training & pruning procedure, refer to my ML udacity ca
 The project also contains benchmarks on pruning ChineseNet.
 
 ## Possible Extensions
-Making Linear prunable - shouldn't be too difficult, implementation should be identical to PConv2d.
+Making PLinear prunable - shouldn't be too difficult, implementation should be identical to PConv2d.
 
 
 ## References
