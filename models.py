@@ -1,7 +1,7 @@
 import torch
 from torch.autograd import Variable
 import torch.nn as nn
-import src.nn.prunable_nn as pnn
+import prunable_nn as pnn
 import torch.utils.model_zoo as model_zoo
 from torchvision import models
 from operator import itemgetter

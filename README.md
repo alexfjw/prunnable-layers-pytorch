@@ -9,6 +9,11 @@ I went with an OOP approach to make the code more readable.
 The work done by Jacob was a great reference for writing this code.
 His blogpost on pruning can be found [here](https://jacobgil.github.io/deeplearning/pruning-deep-learning).
 
+### Dependencies
+- Python 3.6.3
+- Pytorch 0.4
+- torchvision (for vgg example)
+
 ## Description of code
 The layers in `prunable_nn.py` are plug and play. However, they only compute the importance of each feature map. (pruning is a concept linked to models, and not individual layers).
 Filtering to select the smallest feature map, and to dropping inputs for the immediate layers has to be done manually.
