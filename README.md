@@ -16,14 +16,15 @@ His blogpost on pruning can be found [here](https://jacobgil.github.io/deeplearn
 
 ## Description of code
 The layers in `prunable_nn.py` are plug and play. However, they only compute the importance of each feature map. (pruning is a concept linked to models, and not individual layers).
-Filtering to select the smallest feature map, and to dropping inputs for the immediate layers has to be done manually.
+Filtering to select the smallest feature map and dropping inputs for layer next to the pruned layer has to be done manually.
 
 PConv2d is a Conv2d layer which registers a backward hook during gradient calulation to weigh the importance of each feature map.
 
-Feature maps are stored after every forward operation, and talyor estimates for feature map importance is calculated after every backward operation.
+Feature maps are stored after every forward call, and talyor estimates for feature map importance is calculated after every backward call.
 
-Removing a feature map reduces the outputs of the layer. The next immediate layer has to take in fewer inputs. (drop the number of inputs)
-PLinear and PBatchNorm are coded to perform this task.
+As mentioned, removing a feature map reduces the outputs of the layer. 
+The next immediate layer has to take in fewer inputs.
+PLinear and PBatchNorm have been written to perform this.
 
 ## Examples
 There are two examples of models adapted to support pruning in `models.py`.
