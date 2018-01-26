@@ -9,6 +9,15 @@ from operator import itemgetter
 
 class VGG(models.VGG):
 
+    def __init__(self, features, num_classes=1000):
+        super().__init__(features, num_classes)
+
+    def pruning(self, flag):
+        prunable = [module for module in self.features
+                    if getattr(module, "prune_feature_map", False) and module.out_channels > 1]
+        for p in prunable:
+            p.pruning(flag)
+
     def prune(self):
         # gather all modules & their indices. (excluding classifier)
         # gather all talyor_estimate_lists & pair with the indices
@@ -113,6 +122,14 @@ class ChineseNet(nn.Module):
             nn.Linear(1024, num_classes)
         )
         self.convert_to_onnx = False
+        self.__pruning = False
+
+    def pruning(self, flag):
+        self.__pruning = flag
+        prunable = [module for module in self.features
+                    if getattr(module, "prune_feature_map", False) and module.out_channels > 1]
+        for p in prunable:
+            p.pruning(flag)
 
     def make_layers(self):
         layers = []
@@ -159,7 +176,7 @@ class ChineseNet(nn.Module):
         feature_list = list(enumerate(self.features))
         # grab the taylor estimates of PConv2ds & pair with the module's index in self.features
         taylor_estimates_by_module = [(module.taylor_estimates, module_idx) for module_idx, module in feature_list
-                                      if issubclass(type(module), pnn.PConv2d) and module.out_channels > 1]
+                                      if getattr(module, "prune_feature_map", False) and module.out_channels > 1]
 
         taylor_estimates_by_feature_map = \
             [(estimate, map_idx, module_idx)

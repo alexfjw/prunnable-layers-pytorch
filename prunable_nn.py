@@ -14,12 +14,21 @@ class PConv2d(nn.Conv2d):
         super().__init__(in_channels, out_channels, kernel_size, stride, padding, dilation, groups, bias)
         self.__recent_activations = None
         self.taylor_estimates = None
-        self.register_backward_hook(self.__estimate_taylor_importance)
+        self.__pruning_hook = None
+        self.__pruning = False
 
     def forward(self, x):
         output = super().forward(x)
-        self.__recent_activations = output.clone()
+        if self.__pruning:
+            self.__recent_activations = output.clone()
         return output
+
+    def pruning(self, flag):
+        self.__pruning = flag
+        if flag:
+            self.__pruning_hook = self.register_backward_hook(self.__estimate_taylor_importance)
+        else:
+            self.__pruning_hook = None
 
     def __estimate_taylor_importance(self, _, grad_input, grad_output):
         # skip dim=1, its the dim for depth

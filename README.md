@@ -26,10 +26,12 @@ As mentioned, removing a feature map reduces the outputs of the layer.
 The next immediate layer has to take in fewer inputs.
 PLinear and PBatchNorm have been written to perform this.
 
-## Examples
+## Usage Examples
 There are two examples of models adapted to support pruning in `models.py`.
 Pruning with ChineseNet has been thoroughly tested.
 VGG11_BN requires too much memory for pruning, but can still be used as a reference. (Seems to need more than 6GB of VRAM)
+
+Do add a prune method to your model, and activate the prunable layers as necessary
 
 The tests in `./tests/` may be useful for testing your prunable models.
 
