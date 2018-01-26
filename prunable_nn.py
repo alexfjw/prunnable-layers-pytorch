@@ -22,15 +22,15 @@ class PConv2d(nn.Conv2d):
         return output
 
     def __estimate_taylor_importance(self, _, grad_input, grad_output):
-        # skip dim=1, its the dim for feature maps
+        # skip dim=1, its the dim for depth
         n_batch, _, n_x, n_y = self.__recent_activations.size()
-        n_dimensions = n_batch * n_x * n_y
+        n_parameters = n_batch * n_x * n_y
 
         estimates = self.__recent_activations.mul_(grad_output[0]) \
             .sum(dim=3) \
             .sum(dim=2) \
             .sum(dim=0) \
-            .div_(n_dimensions)
+            .div_(n_parameters)
 
         # normalization
         self.taylor_estimates = torch.abs(estimates) / torch.sqrt(torch.sum(estimates * estimates))
