@@ -3,8 +3,8 @@ The code in this repo has been extracted from my ML udacity capstone project [he
 where I experimented with CNNs for Japanese OCR.
 
 Prunable versions of common CNN layers can be found in this repo.
-We use taylor expansion to estimate the importance of feature maps, as described by Molchanov, P. et al[1].
-A good summary of the approach can be found [here](https://jacobgil.github.io/deeplearning/pruning-deep-learning).
+We use taylor expansion to estimate the importance of feature maps, as described by Molchanov, P. et al[1].  
+A good summary of this approach can be found [here](https://jacobgil.github.io/deeplearning/pruning-deep-learning).
 
 Pruning & taylor estimation was written with an OOP approach for readability.
 
@@ -45,5 +45,3 @@ Making PLinear prunable - shouldn't be too difficult, implementation should be i
 
 [1] Molchanov, P., Tyree, S., Karras, T., Aila, T., & Kautz, J. (2017, June 08). Pruning Convolutional Neural Networks for Resource Efficient Inference. Retrieved December 10, 2017, from https://arxiv.org/abs/1611.06440
 
-[2] Link to Jacob's blogpost
-https://jacobgil.github.io/deeplearning/pruning-deep-learning
