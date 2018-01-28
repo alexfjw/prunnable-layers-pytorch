@@ -26,16 +26,13 @@ The next immediate layer has to take in fewer inputs.
 PLinear and PBatchNorm have been written to perform this.
 
 ## Usage Examples
-There are two examples of models adapted to support pruning in `models.py`.
-Pruning with ChineseNet has been thoroughly tested.
-VGG11_BN requires too much memory for pruning, but can still be used as a reference. (Seems to need more than 6GB of VRAM)
+Simply use `PLinear(..), PConv2(..) & PBatchNorm(...)` in place of the originals.
+Also modify your models to add a prune method.  
+See `models.py` for further information.
 
-Do add a prune method to your model, and activate the prunable layers as necessary
+The tests in `./tests/` may be useful for testing your prunable models.  
 
-The tests in `./tests/` may be useful for testing your prunable models.
-
-For examples of the full training & pruning procedure, refer to my ML udacity capstone project [here](https://github.com/alexfjw/jp-ocr-prunned-cnn).
-The project also contains benchmarks on pruning ChineseNet.
+For benchmarks & examples of the full training & pruning procedure, refer to my ML udacity capstone project [here](https://github.com/alexfjw/jp-ocr-prunned-cnn).
 
 ## Possible Extensions
 Making PLinear prunable - shouldn't be too difficult, implementation should be identical to PConv2d.
