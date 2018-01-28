@@ -26,7 +26,7 @@ The next immediate layer has to take in fewer inputs.
 PLinear and PBatchNorm have been written to perform this.
 
 ## Usage Examples
-Simply use `PLinear(..), PConv2(..) & PBatchNorm(...)` in place of the originals.
+Simply use `PLinear(..), PConv2(..) & PBatchNorm(...)` in place of the originals.  
 Also modify your models to add a prune method.  
 See `models.py` for further information.
 
